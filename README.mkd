@@ -1,0 +1,18 @@
+# Python Federal Reserve E-Payments Routing Directory Library
+
+A Python interface for consuming and querying the Federal Reserve E-Payments
+Routing Directory. Allows you to verify a given routing.
+
+## Usage:
+
+    import pyfeddic
+
+    # load from a file you've previously downloaded
+    >>> fw = FedWire('~/fpddir.txt')
+    >>> fw.lookup_by_routing_number('121000374')
+    FedWireRecord(routing_number='121000374', city='SAN FRANCISCO', telegraphic_name='FRB SF', funds_transfer_status='Y', funds_settlement_status='', state='CA', date_of_last_revision=None, securities_transfer_status='Y', customer_name='FEDERAL RESERVE BK OF SAN FRANCISCO')
+    >>> fw.lookup_by_state('CA')[0]
+    FedWireRecord(routing_number='021059438', city='CAMARILLO', telegraphic_name='MINERALS MGMT SERV', funds_transfer_status='N', funds_settlement_status='', state='CA', date_of_last_revision='20050314', securities_transfer_status='Y', customer_name='MINERALS & MANAGEMENT SERVICE')
+    # load straight from the fedwire website
+    len(FedWire('http://www.fedwiredirectory.frb.org/fpddir.txt').records)
+    >>> 9348

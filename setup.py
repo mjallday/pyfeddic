@@ -11,7 +11,7 @@ setup(
     url='https://github.com/mjallday/pyfeddic',
     install_requires=[
         'mock==0.7.2',
-        'nose==1.1.2',
+        'nose>=1.1.0',
     ],
     setup_requires=[],
     packages=find_packages(),

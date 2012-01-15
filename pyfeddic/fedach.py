@@ -26,7 +26,32 @@ Data View Code                 1     150     1=Current view
 Filler                         5     151-155     Spaces
 
 """
+from record import RecordBase, RecordFactory
 
 
-class FedACH(object):
-    pass
+class FedACHRecord(RecordBase):
+
+    def __init__(self, line):
+        assert len(line) >= 150
+        self.routing_number = line[:9].strip()
+        self.office_code = line[10].strip()
+        self.servicing_frb_number = line[10:19].strip()
+        self.record_type_code = line[19].strip()
+        self.change_date = line[20:26].strip()
+        self.new_routing_number = line[26:35].strip()
+        self.customer_name = line[35:71].strip()
+        self.address = line[71:107].strip()
+        self.city = line[107:127].strip()
+        self.state = line[127:129].strip()
+        self.zip_code = line[129:134].strip()
+        self.zip_code_extension = line[134:138].strip()
+        self.telephone = line[138:148].strip()
+        self.institution_status_code = line[148].strip()
+        self.data_view_code = line[149].strip()
+
+
+class FedWire(RecordFactory):
+
+    def __init__(self, location_of_db):
+        super(self.__class__, self).__init__(location_of_db, FedACHRecord)
+        self.load_db()

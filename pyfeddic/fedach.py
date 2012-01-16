@@ -50,7 +50,7 @@ class FedACHRecord(RecordBase):
         self.data_view_code = line[149].strip()
 
 
-class FedWire(RecordFactory):
+class FedACH(RecordFactory):
 
     def __init__(self, location_of_db):
         super(self.__class__, self).__init__(location_of_db, FedACHRecord)

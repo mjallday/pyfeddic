@@ -1,5 +1,8 @@
 # Python Federal Reserve E-Payments Routing Directory Library
 
+[![Build Status](https://secure.travis-ci.org/mjallday/pyfeddic.png)](http://travis-ci.org/mjallday/pyfeddic)
+
+
 A Python interface for consuming and querying the Federal Reserve E-Payments
 Routing Directory. Allows you to verify a given FedWire routing number and 
 search the directory to find Fedwire funds transfer and book-entry securities 
